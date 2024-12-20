@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ethan-idk.github.io/sitemap.xml

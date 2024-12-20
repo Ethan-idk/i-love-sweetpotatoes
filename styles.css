@@ -1,0 +1,551 @@
+:root {
+    --primary-color: #ff69b4;
+    --secondary-color: #8a2be2;
+    --gradient-1: #ff69b4;
+    --gradient-2: #da70d6;
+    --gradient-3: #8a2be2;
+}
+
+[data-theme="dark"] {
+    --background-color: #1a1a1a;
+    --text-color: #ffffff;
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: url('images/heart-bg.jpg') center center/cover no-repeat fixed;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: white;
+    position: relative;
+}
+
+/* 添加暗色叠加层，使内容更清晰 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 导航栏样式 */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* 图片网格样式 */
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+/* 聊天窗口样式 */
+.chat-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.chat-container {
+    background: #000000;  /* 深色背景 */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 聊天头部 */
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid #333;
+}
+
+.back-button {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.header-title {
+    color: white;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+
+/* 聊天消息区域 */
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #000000;
+}
+
+/* 消息样式 */
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    max-width: 80%;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.message-content {
+    padding: 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 用户消息 */
+.user-message {
+    align-self: flex-end;
+}
+
+.user-message .message-content {
+    background: #4CAF50;  /* 绿色背景 */
+    color: white;
+    margin-left: auto;
+}
+
+/* AI消息 */
+.ai-message {
+    align-self: flex-start;
+}
+
+.ai-message .message-content {
+    background: #333;
+    color: white;
+}
+
+/* 时间戳 */
+.timestamp {
+    text-align: center;
+    color: #666;
+    font-size: 0.8rem;
+    margin: 1rem 0;
+}
+
+/* 语音消息 */
+.voice-message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.voice-duration {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.chat-input-container {
+    padding: 1rem;
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.chat-input {
+    flex-grow: 1;
+    background: #2a2a2a;
+    border: none;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    color: white;
+    resize: none;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.chat-input:focus {
+    outline: none;
+    background: #333;
+}
+
+.send-message {
+    background: #666;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.send-message:hover {
+    background: #888;
+}
+
+/* 添加基础样式 */
+.section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+/* 添加头像样式 */
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 2rem;
+    display: block;
+}
+
+/* 改进聊天窗口样式 */
+.chat-toggle {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.chat-toggle:hover {
+    background: var(--secondary-color);
+}
+
+/* 添加加载状态样式 */
+.loading {
+    opacity: 0.7;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+} 
+
+/* 添加主页样式 */
+.main-title {
+    text-align: center;
+    font-size: 3.5rem;
+    margin: 2rem 0;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.8),
+                 0 0 40px rgba(138, 43, 226, 0.6);
+    animation: glow 2s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.8),
+                     0 0 40px rgba(138, 43, 226, 0.6);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(255, 105, 180, 0.9),
+                     0 0 50px rgba(138, 43, 226, 0.8),
+                     0 0 70px rgba(138, 43, 226, 0.6);
+    }
+}
+
+.subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.character-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.character-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.character-name {
+    font-size: 1.5rem;
+    color: white;
+    margin: 1rem 0;
+}
+
+.personality-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+}
+
+.tag {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+.tag.personality {
+    background: #333;
+}
+
+.character-desc {
+    color: white;
+    margin: 1.5rem 0;
+    line-height: 1.5;
+}
+
+.chat-button {
+    background: linear-gradient(45deg, #e83e8c, #6f42c1);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.chat-button:hover {
+    transform: translateY(-2px);
+}
+
+/* 添加浮动粒子效果 */
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+    }
+} 
+
+/* 角色详情页样式 */
+.character-profile {
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.back-button {
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-5px);
+}
+
+.profile-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 2rem auto;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.profile-name {
+    font-size: 2.5rem;
+    color: white;
+    margin: 1rem 0;
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+}
+
+.profile-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 修改聊天容器样式 */
+.chat-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    height: 600px;
+    margin-top: 2rem;
+} 
+
+/* 角色信息区域 */
+.profile-info {
+    padding: 2rem;
+    text-align: center;
+    background: #1a1a1a;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.profile-name {
+    color: white;
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+.profile-tags {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    background: #333;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}

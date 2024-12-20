@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我钟爱村西头烤地瓜</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 在脚本加载之前定义角色数据 -->
+    <script>
+        window.AI_CHARACTERS = [
+            {
+                id: 1,
+                name: "小雨 / Xiaoyu",
+                avatar: "images/2.jpg",
+                personality: "INTJ",
+                description: "温柔似水的文学少女，知性优雅的气质让人心动。"
+            }
+        ];
+    </script>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <button class="back-button" onclick="window.location.href='index.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="header-title" id="characterName">AI虚拟恋人</div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <!-- 消息会通过JavaScript动态添加 -->
+        </div>
+
+        <div class="chat-input-container">
+            <textarea class="chat-input" placeholder="输入消息..." id="chatInput"></textarea>
+            <button class="send-message" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+    <script src="./character.js"></script>
+</body>
+</html> 
